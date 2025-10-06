@@ -147,17 +147,17 @@ class AuthHelper {
                 if (ngoProfile.status === 'pending') {
                     console.log('⏳ NGO account pending approval');
                     this.isProcessingLogin = false;
-                    window.location.href = 'ngo-pending.html';
+                    window.location.href = '/ngo-pending';
                     return;
                 } else if (ngoProfile.status === 'rejected') {
                     console.log('❌ NGO account rejected');
                     this.isProcessingLogin = false;
-                    window.location.href = 'ngo-rejected.html';
+                    window.location.href = '/ngo-rejected';
                     return;
                 } else if (ngoProfile.status === 'approved') {
                     console.log('✅ NGO account approved, redirecting to dashboard');
                     this.isProcessingLogin = false;
-                    window.location.href = 'ngodashboard.html';
+                    window.location.href = '/ngodashboard';
                     return;
                 }
             }
@@ -174,14 +174,14 @@ class AuthHelper {
             if (donorProfile) {
                 console.log('🎯 User is a donor, redirecting to donor dashboard');
                 this.isProcessingLogin = false;
-                window.location.href = 'dashboard.html';
+                window.location.href = '/dashboard';
                 return;
             }
 
             // If no profile found
             console.log('❓ User has no profile, redirecting to role selection');
             this.isProcessingLogin = false;
-            window.location.href = 'DonorOrNgo.html';
+            window.location.href = '/donororngo';
 
         } catch (error) {
             console.error('💥 Login failed:', error);
@@ -190,7 +190,7 @@ class AuthHelper {
             // Handle case where no profile exists
             if (error.code === 'PGRST116') {
                 console.log('❓ User has no profile, redirecting to role selection');
-                window.location.href = 'DonorOrNgo.html';
+                window.location.href = '/donororngo';
                 return;
             }
             
@@ -259,12 +259,12 @@ class AuthHelper {
 
             if (signInError) {
                 console.warn('⚠️ Auto sign-in failed, but registration successful');
-                window.location.href = 'LoginSignUp.html?message=Registration successful! Please sign in.';
+                window.location.href = '/loginsignup?message=Registration successful! Please sign in.';
                 return;
             }
 
             console.log('🎉 Donor registration complete, redirecting...');
-            window.location.href = 'dashboard.html';
+            window.location.href = '/dashboard';
 
         } catch (error) {
             console.error('💥 Donor registration failed:', error);
@@ -359,16 +359,16 @@ class AuthHelper {
 
                     if (signInError) {
                         console.warn('⚠️ Auto sign-in failed, but registration successful');
-                        window.location.href = 'LoginSignUp.html?message=Registration successful! Please sign in.';
+                        window.location.href = '/loginsignup?message=Registration successful! Please sign in.';
                         return;
                     }
 
                     console.log('🎉 NGO registration complete, redirecting to pending page...');
-                    window.location.href = 'ngo-pending.html';
+                    window.location.href = '/ngo-pending';
                     
                 } catch (signInError) {
                     console.error('💥 Auto sign-in failed:', signInError);
-                    window.location.href = 'LoginSignUp.html?message=Registration successful! Please sign in.';
+                    window.location.href = '/loginsignup?message=Registration successful! Please sign in.';
                 }
             }, 1000);
 
@@ -490,7 +490,7 @@ class AuthHelper {
             console.log('✅ Account deleted successfully');
 
             // Redirect to home page
-            window.location.href = 'LandingPage.html?message=Account deleted successfully';
+            window.location.href = '/landingpage?message=Account deleted successfully';
 
         } catch (error) {
             console.error('💥 Account deletion failed:', error);
@@ -554,14 +554,14 @@ class AuthHelper {
         });
         
         console.log('✅ Comprehensive logout completed');
-        
+
         // Force hard redirect
-        window.location.replace('LoginSignUp.html');
+        window.location.replace('/loginsignup');
         
     } catch (error) {
         console.error('💥 Logout failed:', error);
         // Still redirect even if there's an error
-        window.location.replace('LoginSignUp.html');
+        window.location.replace('/loginsignup');
     }
 }
 
