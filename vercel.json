@@ -1,9 +1,9 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/", "destination": "/LandingPage.html" },
+    { "source": "/", "destination": "/landingpage.html" },
     {
-      "source": "/:path((?!.*\\.).*)",
+      "source": "/:path((?!.\\.).)",
       "destination": "/:path.html"
     }
   ]
