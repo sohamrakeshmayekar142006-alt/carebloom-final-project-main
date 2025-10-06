@@ -1,6 +1,7 @@
 {
   "version": 2,
   "rewrites": [
+    { "source": "/", "destination": "/LandingPage.html" },
     {
       "source": "/:path((?!.*\\.).*)",
       "destination": "/:path.html"
